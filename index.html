@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="box"></div>
+  <script>
+    document.addEventListener('mousemove', function (event) {
+      const box = document.createElement('div');
+      box.style.position = 'absolute';
+      
+      //let size = Math.random()*10+50;
+      let size = 200;
+      
+      //box.style.width = '100px';
+      //box.style.height = '100px';
+      box.style.width = `${size}px`;
+      box.style.height = `${size}px`;
+      box.style.borderRadius = '50px';
+      
+      box.style.backgroundColor = `rgb(${Math.ceil(Math.random()*255)},
+      ${Math.ceil(Math.random()*255)}, ${Math.ceil(Math.random()*255)})`;
+      box.style.top = `${event.clientY-(size/4)}px`;
+      box.style.left = `${event.clientX-(size/4)}px`;
+      //box.style.top = `${event.clientY-100}px`;
+      //box.style.left = `${event.clientX-100}px`;
+      
+      document.body.appendChild(box);
+    });
+
+    /*let rotate = 0;
+    function animate () {
+      requestAnimationFrame(animate);
+      let boxes = document.querySelectorAll('div');
+      rotate += 0.1;
+      boxes.forEach(function(box) {
+        box.style.transform = `rotate($(rotate)deg)`;
+      });
+    };*/
+
+    let rotate = 0;
+
+    function boxRotate() {
+      requestAnimationFrame(boxRotate);
+      let boxes = document.querySelectorAll('div');
+      rotate += 0.5;
+      boxes.forEach(function(box) {
+        box.style.transform = `rotate(${rotate}deg)`;
+      });
+    }
+    boxRotate();
+  </script>
+</body>
+</html>
